@@ -23,10 +23,6 @@
 // Serial port logging
 #define LOG_ENABLED 1
 
-// Password for http api, comment out to disable
-#define API_PASSWORD "wifilamp"
-
-
 #define PIXELS_COUNT 15
 
 #define BUTTON_PIN D2

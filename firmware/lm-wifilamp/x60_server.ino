@@ -56,16 +56,12 @@ void serverSetup() {
   server.begin();
 }
 
-#ifdef API_PASSWORD
 #define SERVER_AUTH_REQUIRED if (!serverAuthenticateUser()) return;
 bool serverAuthenticateUser() {
-  if (server.authenticate("admin", API_PASSWORD)) {
+  if (server.authenticate("admin", config.apiPassword)) {
     return true;
   } else {
     server.send(401, "text/json", "{\"error\":\"Login required\"}\n");
     return false;
   }
 }
-#else
-#define SERVER_AUTH_REQUIRED
-#endif

@@ -4,6 +4,7 @@
 typedef struct {
   uint8_t magic;
   char blynkToken[33];
+  char apiPassword[16];
 } Config;
 
 Config config;
@@ -30,6 +31,7 @@ void configRead() {
   }
 
   logValue(" blynk token: ", config.blynkToken);
+  logValue(" api password: ", config.apiPassword);
 }
 
 void configSetup() {

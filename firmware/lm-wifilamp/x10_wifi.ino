@@ -25,6 +25,9 @@ void wifiStartAp() {
   WiFiManagerParameter blynkTokenParam("token", "Blynk Auth token", config.blynkToken, 33);
   wifiManager.addParameter(&blynkTokenParam);
 
+  WiFiManagerParameter apiPasswordParam("apiPassword", "API Password", config.apiPassword, 16);
+  wifiManager.addParameter(&apiPasswordParam);
+
   String ssid = HOSTNAME_PREFIX;
   ssid += chipId;
   if (!wifiManager.startConfigPortal(ssid.c_str())) {
@@ -35,6 +38,7 @@ void wifiStartAp() {
   }
 
   strcpy(config.blynkToken, blynkTokenParam.getValue());
+  strcpy(config.apiPassword, apiPasswordParam.getValue());
 
   if (wifiShouldSaveConfig) {
     configWrite();
